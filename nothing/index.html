@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>@</title>
   <link rel="icon" type="image/png" href="https://i.postimg.cc/jqfw8nQV/flower.png">
-  <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -13,7 +13,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      font-family: 'Press Start 2P', cursive;
+      font-family: 'Amatic SC', cursive;
       overflow: hidden;
       position: relative;
     }
@@ -55,6 +55,7 @@
       text-align: center;
       user-select: none;
       cursor: default;
+      
     }
 
     .tilt-container {
@@ -81,8 +82,8 @@
       border-radius: 37px;
       background: rgba(20, 20, 20, 0.1);
       backdrop-filter: blur(2px);
-      border: 3px solid rgba(123, 120, 121, 0.3);
-      box-shadow: 0 0 4px rgba(52, 42, 47, 0.2);
+      border: 3px solid rgb(255, 255, 255);
+      box-shadow: 0 0 4px rgba(255, 250, 253, 0.651);
       opacity: 0;
       transition: opacity 0.2s ease;
     }
@@ -130,12 +131,15 @@
 
     .subtitle {
       position: absolute;
-      top: 140px;
+      top: 120px;
       left: 30px;
-      font-size: 0.8rem;
+      font-size: 2rem;
       font-weight: bold; 
       color: #ffff;    
       cursor: default;
+      text-shadow: 0 0 8px rgba(255,255,255,0.8),
+               0 0 16px rgba(255,255,255,0.6),
+               0 0 24px rgba(255,255,255,0.4);
     }
 
     .badges {
@@ -160,7 +164,7 @@
       top: 10px; right: 15px;
       display: flex; align-items: center;
       gap: 2px;
-      font-size: 10px; font-weight: bold; color: #ffffff;
+      font-size: 20px; font-weight: bold; color: #ffffff;
       opacity: 0;
       transform: translateY(10px);
     }
@@ -176,11 +180,20 @@
     }
 
     .badge { position: relative; display: inline-block; }
+    
     .badge img {
-      width: 20px; height: 20px;
-      filter: invert(100%) brightness(200%);
-      pointer-events: auto; user-select: none;
-    }
+  width: 20px;
+  height: 20px;
+  filter: invert(100%) brightness(200%)
+          drop-shadow(0 0 6px rgba(255,255,255,0.8))
+          drop-shadow(0 0 12px rgba(255,255,255,0.6));
+  pointer-events: auto; 
+  user-select: none;
+  transition: transform 0.2s ease;
+}
+.badge img:hover {
+  transform: scale(1.2);
+}
     .badge.premium img { width: 27px; height: 27px; }
 
     .badge::after {
@@ -205,7 +218,6 @@
 
     .socials img {
       width: 45px; height: 45px;
-      filter: invert(100%) brightness(200%);
       transition: transform 0.2s ease;
       user-select: none; pointer-events: auto;
     }
@@ -267,14 +279,22 @@
       animation: fadeSlide 0.5s ease forwards 0.8s;
     }
     .rectangle.top.visible .socials {
-      animation: fadeSlide 0.5s ease forwards 1.2s;
+      animation: fadeSlide 0.5s ease forwards 2s;
     }
+    #bg-video {
+  pointer-events: none; 
+  user-select: none;      
+}
+
   </style>
 </head>
 <body>
-<video autoplay muted loop id="bg-video" style="position: fixed; top:0; left:0; width:100%; height:100%; object-fit:cover; z-index: -1;">
-  <source src="https://r2.guns.lol/236dfa62-7ea7-4387-b8d8-ec63763c3219.mp4" type="video/mp4">
+<video autoplay muted loop playsinline id="bg-video" 
+  style="position: fixed; top:0; left:0; width:100%; height:100%; 
+         object-fit:cover; z-index: -1; pointer-events:none; user-select:none;">
+  <source src="https://r2.guns.lol/b88d0353-3868-4872-be2b-ada6b890352c.mp4" type="video/mp4">
 </video>
+
 
 
 
@@ -295,9 +315,9 @@
           <div class="badge premium" data-title="Premium"><img src="https://i.postimg.cc/YSmpy230/prenium.png"></div>
         </div>
         <div class="socials">
-          <a href="https://github.com/yakoupy" target="_blank"><img src="https://i.postimg.cc/jqf6pH1s/github.png"></a>
-          <a href="https://www.tiktok.com/@s6xpeak" target="_blank"><img src="https://i.postimg.cc/sDY2CxyQ/tiktok.png"></a>
-          <a href="https://discord.gg/wkPbGRXtmK" target="_blank"><img src="https://i.postimg.cc/RZxvPBHS/discord.png"></a>
+          <a href="https://kywha.github.io/aa" target="_blank"><img src="https://i.postimg.cc/524VBBmM/Hello-kitty.png"></a>
+          <a href="https://kywha.github.io/aa" target="_blank"><img src="https://i.postimg.cc/524VBBmM/Hello-kitty.png"></a>
+          <a href="https://discord.gg/wkPbGRXtmK" target="_blank"><img src="https://i.postimg.cc/524VBBmM/Hello-kitty.png"></a>
         </div>
         <div class="views"><img src="https://i.postimg.cc/QtFycFSf/view.png"><span class="view-count">0</span></div>
       </div>
@@ -387,6 +407,15 @@ overlay.addEventListener("click", () => {
   bgVideo.play();
 });
 
+overlay.addEventListener("click", () => {
+  overlay.classList.add("fade-out");
+  rectangles.forEach(rect => rect.classList.add("visible"));
+
+  const bgVideo = document.getElementById("bg-video");
+  bgVideo.muted = false;     
+  bgVideo.volume = 0.2;    
+  bgVideo.play();            
+});
 
   </script>
 </body>
