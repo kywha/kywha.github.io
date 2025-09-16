@@ -344,29 +344,41 @@
     })();
 
     const subtitleEl = document.getElementById("subtitle");
-    const text = "Fall seven times and stand up eight.";
-    let index = 0;
-    let direction = 1; 
+const texts = [
+  "Fall seven times and stand up eight.", 
+  "Kywha and Koruko on top."
+]; 
 
-    function typeWriter() {
-      subtitleEl.textContent = text.slice(0, index) + "|";
-      index += direction;
-      if (index > text.length) {
-        direction = -1;
-        index = text.length; 
-        setTimeout(typeWriter, 1000); 
-        return;
-      }
-      if (index < 0) {
-        direction = 1;
-        index = 0; 
-        setTimeout(typeWriter, 500); 
-        return;
-      }
-      setTimeout(typeWriter, direction === 1 ? 120 : 80);
-    }
+let textIndex = 0;   
+let charIndex = 0;  
+let direction = 1;  
 
-    setTimeout(typeWriter, 2000); 
+function typeWriter() {
+  const currentText = texts[textIndex];
+  subtitleEl.textContent = currentText.slice(0, charIndex) + "|";
+  
+  charIndex += direction;
+
+  if (charIndex > currentText.length) {
+    direction = -1;
+    charIndex = currentText.length;
+    setTimeout(typeWriter, 1000); 
+    return;
+  }
+
+  if (charIndex < 0) {
+    direction = 1;
+    charIndex = 0;
+    textIndex = (textIndex + 1) % texts.length; 
+    setTimeout(typeWriter, 500); 
+    return;
+  }
+
+  setTimeout(typeWriter, direction === 1 ? 120 : 80);
+}
+
+setTimeout(typeWriter, 2000); 
+
 
     const trailImage = "https://i.postimg.cc/jqfw8nQV/flower.png"; 
     document.addEventListener("mousemove", (e) => {
