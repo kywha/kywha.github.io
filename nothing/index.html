@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
@@ -144,7 +144,7 @@
 
     .badges {
       position: absolute;
-      top: 85px;
+      top: 90px;
       left: 27px;
       display: flex;
       align-items: center;
@@ -184,7 +184,7 @@
     .badge img {
   width: 20px;
   height: 20px;
-  filter: invert(100%) brightness(200%)
+  filter: invert(50%) brightness(200%)
           drop-shadow(0 0 6px rgba(255,255,255,0.8))
           drop-shadow(0 0 12px rgba(255,255,255,0.6));
   pointer-events: auto; 
@@ -289,35 +289,29 @@
   </style>
 </head>
 <body>
-<video autoplay muted loop playsinline id="bg-video" 
+<video muted loop playsinline id="bg-video" 
   style="position: fixed; top:0; left:0; width:100%; height:100%; 
          object-fit:cover; z-index: -1; pointer-events:none; user-select:none;">
-  <source src="https://r2.guns.lol/b88d0353-3868-4872-be2b-ada6b890352c.mp4" type="video/mp4">
+  <source src="https://r2.guns.lol/6614af8e-7221-4bb2-ac27-235586d1b5f9.mp4" type="video/mp4">
 </video>
 
 
 
 
-  <div class="overlay" id="overlay"><p>hehe.!</p></div>
+
+  <div class="overlay" id="overlay"><p>Koruko</p></div>
 
   <div class="tilt-container" id="tilt">
     <div class="tilt-group">
       <div class="rectangle top">
-        <img class="avatar" src="https://i.postimg.cc/QdwdfTPY/seiju.jpg" alt="Avatar">
+        <img class="avatar" src="https://i.postimg.cc/VLFZWKWz/aa.png" alt="Avatar">
         <div class="subtitle" id="subtitle"></div>
         <div class="badges">
-          <div class="badge" data-title="Image Host"><img src="https://i.postimg.cc/ZR8J4fXh/imagehost.png"></div>
-          <div class="badge" data-title="Winner"><img src="https://i.postimg.cc/NFbYrKgJ/winner.png"></div>
-          <div class="badge" data-title="Vérifié"><img src="https://i.postimg.cc/hPycDQZh/verify.png"></div>
-          <div class="badge" data-title="Gifter"><img src="https://i.postimg.cc/Fzc5bZ0K/gifter.png"></div>
-          <div class="badge" data-title="Community Helper"><img src="https://i.postimg.cc/L8PYYKqd/communityhelper.png"></div>
-          <div class="badge" data-title="Donor"><img src="https://i.postimg.cc/15G4s0bP/donor.png"></div>
-          <div class="badge premium" data-title="Premium"><img src="https://i.postimg.cc/YSmpy230/prenium.png"></div>
+          <div class="badge" data-title="Koruko's ball"><img src="https://i.postimg.cc/mrJ3B9Bc/basket.png"></div>
         </div>
         <div class="socials">
-          <a href="https://kywha.github.io/aa" target="_blank"><img src="https://i.postimg.cc/524VBBmM/Hello-kitty.png"></a>
-          <a href="https://kywha.github.io/aa" target="_blank"><img src="https://i.postimg.cc/524VBBmM/Hello-kitty.png"></a>
-          <a href="https://discord.gg/wkPbGRXtmK" target="_blank"><img src="https://i.postimg.cc/524VBBmM/Hello-kitty.png"></a>
+          <a href="https://www.roblox.com/fr/users/4207600089/profile" target="_blank"><img src="https://i.postimg.cc/524VBBmM/Hello-kitty.png"></a>
+          <a href="https://www.roblox.com/fr/users/4207600089/profile" target="_blank"><img src="https://i.postimg.cc/524VBBmM/Hello-kitty.png"></a>
         </div>
         <div class="views"><img src="https://i.postimg.cc/QtFycFSf/view.png"><span class="view-count">0</span></div>
       </div>
@@ -377,8 +371,6 @@ function typeWriter() {
   setTimeout(typeWriter, direction === 1 ? 120 : 80);
 }
 
-setTimeout(typeWriter, 2000); 
-
 
     const trailImage = "https://i.postimg.cc/jqfw8nQV/flower.png"; 
     document.addEventListener("mousemove", (e) => {
@@ -417,6 +409,9 @@ overlay.addEventListener("click", () => {
   bgVideo.muted = false;
   bgVideo.volume = 0.2;
   bgVideo.play();
+  
+  setTimeout(typeWriter, 2000);
+
 });
 
 overlay.addEventListener("click", () => {
