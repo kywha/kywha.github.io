@@ -2,9 +2,9 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>@a @aa </title>
+  <title>@</title>
   <link rel="icon" type="image/png" href="https://i.postimg.cc/jqfw8nQV/flower.png">
-  <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -13,9 +13,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      font-family: 'Press Start 2P', cursive;
-      background: url("https://i.postimg.cc/5Npf62M4/c03653fb9748b05b2e0dd51edf4d7fda.jpg") no-repeat center center fixed;
-      background-size: cover;
+      font-family: 'Amatic SC', cursive;
       overflow: hidden;
       position: relative;
     }
@@ -28,7 +26,6 @@
       background: rgba(0,0,0,0);
       z-index: 0;
     }
-
 
     .overlay {
       position: fixed;
@@ -58,6 +55,7 @@
       text-align: center;
       user-select: none;
       cursor: default;
+      
     }
 
     .tilt-container {
@@ -81,127 +79,121 @@
 
     .rectangle {
       position: relative;
-      border-radius: 25px;
+      border-radius: 37px;
       background: rgba(20, 20, 20, 0.1);
       backdrop-filter: blur(2px);
-      border: 3px solid rgba(255,105,180,0.3);
-      box-shadow: 0 0 4px rgba(255,105,180,0.2);
+      border: 3px solid rgb(255, 255, 255);
+      box-shadow: 0 0 4px rgba(255, 250, 253, 0.651);
       opacity: 0;
       transition: opacity 0.2s ease;
     }
-
-    .rectangle.visible {
-      opacity: 1;
-    }
-
     .rectangle.top {
-      width: 705px;
-      height: 320px;
-      transform: translateY(40px);
+      width: 500px;
+      height: 100px;
+      transform: translateY(20px);
+      opacity: 0;
     }
 
     .rectangle.top.visible {
-      animation: slideUp 0.8s ease forwards;
+      animation: expandStep1 0.6s ease forwards, expandStep2 0.8s ease forwards 1.2s;
     }
 
-    @keyframes slideUp {
-      from { opacity: 0; transform: translateY(40px); }
-      to { opacity: 1; transform: translateY(0); }
+    @keyframes expandStep1 {
+      0% {
+        opacity: 0;
+        width: 500px;
+        height: 100px;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        width: 610px;
+        height: 140px;
+        transform: translateY(0);
+      }
     }
 
-    .rectangle.bottom {
-      width: 705px;
-      height: 100px;
-      display: flex;
-      align-items: center;
-      padding: 15px;
-      gap: 15px;
+    @keyframes expandStep2 {
+      0% { height: 140px; }
+      100% { height: 250px; }
     }
 
     .avatar {
       position: absolute;
-      top: 31px;
-      left: 15px;
-      width: 90px;
+      top: -50px;
+      left: 20px;
+      width: 120px;
       height: auto;
       user-select: none;
       pointer-events: none;
-      filter: brightness(0) saturate(100%) invert(39%) sepia(88%) saturate(600%) hue-rotate(290deg) brightness(100%) contrast(105%);
-
-    }
-
-    .username {
-      position: absolute;
-      top: 40px;
-      left: 125px;
-      font-size: 1.7rem;
-      font-weight: bold;
-      color: #ff4da6;
-      text-shadow: 0 0 4px rgba(77, 77, 77, 0.1), 0 0 8px rgba(255,255,255,0.08);
-      cursor: default;
+      border-radius: 37px;
     }
 
     .subtitle {
       position: absolute;
-      top: 82.5px;
-      left: 125px;
-      font-size: 0.8rem;
+      top: 120px;
+      left: 30px;
+      font-size: 2rem;
       font-weight: bold; 
-      color: #ff80bf;    
+      color: #ffff;    
       cursor: default;
+      text-shadow: 0 0 8px rgba(255,255,255,0.8),
+               0 0 16px rgba(255,255,255,0.6),
+               0 0 24px rgba(255,255,255,0.4);
     }
-
-    .joined {
-      position: absolute;
-      top: 105px;
-      left: 125px;
-      font-size: 0.6rem;
-      font-weight: normal;
-      color: #ffb3d9; 
-      cursor: default;
-    }
-
-    .username::after {
-      content: "UID 1";
-      position: absolute;
-      bottom: 110%;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(0,0,0,0.95);
-      color: white;
-      font-size: 11px;
-      font-weight: bold;
-      padding: 6px 12px;
-      border-radius: 10px;
-      white-space: nowrap;
-      opacity: 0;
-      transition: opacity 0.2s ease, transform 0.2s ease;
-      pointer-events: none;
-    }
-
-    .username:hover::after { opacity: 1; transform: translateX(-50%) translateY(-2px); }
 
     .badges {
       position: absolute;
-      top: 37px;
-      left: 235px;
+      top: 90px;
+      left: 27px;
       display: flex;
       align-items: center;
-      gap: 3px;
-      padding: 3px 7px;
+      gap: 3.5px;
+      padding: 1px 7px;
       border-radius: 40px;
-      background: rgba(20,20,20,0.05);
-      backdrop-filter: blur(0.2px);
-      border: 1px solid rgba(255,255,255,0.02);
+      background: rgba(114, 114, 114, 0.05);
+      backdrop-filter: blur(0.5px); 
+      border: 2px solid rgba(255,255,255,0.02);
       user-select: none;
+      opacity: 0;
+      transform: translateY(10px);
+    }
+
+    .views {
+      position: absolute;
+      top: 10px; right: 15px;
+      display: flex; align-items: center;
+      gap: 2px;
+      font-size: 20px; font-weight: bold; color: #ffffff;
+      opacity: 0;
+      transform: translateY(10px);
+    }
+
+    .socials {
+      position: absolute;
+      top: 180px; left: 35%;
+      transform: translateX(-50%) translateY(10px);
+      display: flex;
+      gap: 10px;
+      user-select: none;
+      opacity: 0;
     }
 
     .badge { position: relative; display: inline-block; }
+    
     .badge img {
-      width: 20px; height: 20px;
-      filter: brightness(0) saturate(100%) invert(39%) sepia(88%) saturate(600%) hue-rotate(290deg) brightness(100%) contrast(105%);
-      pointer-events: auto; user-select: none;
-    }
+  width: 20px;
+  height: 20px;
+  filter: invert(50%) brightness(200%)
+          drop-shadow(0 0 6px rgba(255,255,255,0.8))
+          drop-shadow(0 0 12px rgba(255,255,255,0.6));
+  pointer-events: auto; 
+  user-select: none;
+  transition: transform 0.2s ease;
+}
+.badge img:hover {
+  transform: scale(1.2);
+}
     .badge.premium img { width: 27px; height: 27px; }
 
     .badge::after {
@@ -224,109 +216,23 @@
     }
     .badge:hover::after { opacity: 1; transform: translateX(-50%) translateY(-2px); }
 
-    .separator {
-      position: absolute;
-      top: 160px;
-      left: 52%;
-      transform: translateX(-50%);
-      width: 90%; height: 2px;
-      background: rgba(255,105,180,0.3);
-    }
-
-    .socials {
-      position: absolute;
-      top: 220px; left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 10px;
-      user-select: none;
-    }
-
     .socials img {
       width: 45px; height: 45px;
-      filter: brightness(0) saturate(100%) invert(39%) sepia(88%) saturate(600%) hue-rotate(290deg) brightness(100%) contrast(105%);
       transition: transform 0.2s ease;
       user-select: none; pointer-events: auto;
     }
     .socials img:hover { transform: scale(1.15); }
 
-    .views {
-      position: absolute;
-      bottom: 15px; left: 10px;
-      display: flex; align-items: center;
-      gap: 2px;
-      font-size: 10px; font-weight: bold; color: #e60073;
-    }
     .views img { 
         width: 32px;
         height: 32px; 
         user-select: none; 
         pointer-events: none;
-        filter: brightness(0) saturate(100%) invert(39%) sepia(88%) saturate(600%) hue-rotate(290deg) brightness(100%) contrast(105%);
-
+        filter: invert(100%) brightness(200%);
      }
 
-    .music-cover {
-      width: 70px; height: 70px;
-      border-radius: 12px;
-      object-fit: cover;
-      user-select: none; pointer-events: none;
-    }
-
-    .music-info {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .music-title {
-      font-size: 0.8rem;
-      font-weight: bold;
-      color: #ff4da6;
-      margin-bottom: 8px;
-    }
-
-    .music-time {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      flex: 1;
-    }
-    .music-time span {
-      font-size: 0.8rem;
-      font-weight: bold;
-      color: #e60073;
-    }
-    .music-time .music-line {
-      flex: 1;
-      height: 4px;
-      background: rgba(255,105,180,0.3);
-      border-radius: 3px;
-      overflow: hidden;
-      margin: 0 5px;
-    }
-    .music-time .music-progress {
-      width: 25%;
-      height: 100%;
-      background: #ff4da6;
-    }
-
-    .music-controls {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .music-controls img {
-      width: 28px; height: 28px;
-      filter: brightness(0) saturate(100%) invert(39%) sepia(88%) saturate(600%) hue-rotate(290deg) brightness(100%) contrast(105%);
-      cursor: pointer;
-      user-select: none;
-      -webkit-user-drag: none;
-    }
-
-    ::selection { background: #ff4da6; color: #ff4da6; }
-    .username::selection, .subtitle::selection, .joined::selection { background: #ff4da6; color: #ff4da6; }
+    ::selection { background: #ffffff; color: #ffffff; }
+    .subtitle::selection { background: #ffffff; color: #ffffff; }
 
     * { cursor: url("https://r2.guns.lol/c2602944-9107-4076-8042-55ab1fdb0146.webp"), auto !important; }
     .badge {
@@ -342,172 +248,154 @@
       left: -8px;
       right: -8px;
       bottom: -8px;
-}
-#subtitle::after {
-  content: "|";               
-  display: inline-block;
-  margin-left: 4px;
-  animation: blink 0.7s infinite;
-}
+    }
 
-@keyframes blink {
-  0%   { opacity: 1; }
-  50%  { opacity: 0; }
-  100% { opacity: 1; }
-}
-.trail {
-  position: fixed;   
-  width: 25px;
-  height: 25px;
-  pointer-events: none;
-  user-select: none;
-  transform: scale(1);
-  opacity: 1;
-  z-index: 9999;   /* priorité maximum */
-  animation: trailFade 0.6s forwards;
-}
+    .trail {
+      position: fixed;   
+      width: 25px;
+      height: 25px;
+      pointer-events: none;
+      user-select: none;
+      transform: scale(1);
+      opacity: 1;
+      z-index: 9999;  
+      animation: trailFade 0.6s forwards;
+    }
 
+    @keyframes trailFade {
+      from { opacity: 1; transform: scale(1); }
+      to { opacity: 0; transform: scale(0.3); }
+    }
 
-.trail {
-  animation: trailFade 0.6s forwards;
-}
+    @keyframes fadeSlide {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
-@keyframes trailFade {
-  from { opacity: 1; transform: scale(1); }
-  to { opacity: 0; transform: scale(0.3); }
+    .rectangle.top.visible .badges {
+      animation: fadeSlide 0.5s ease forwards 0.6s;
+    }
+    .rectangle.top.visible .views {
+      animation: fadeSlide 0.5s ease forwards 0.8s;
+    }
+    .rectangle.top.visible .socials {
+      animation: fadeSlide 0.5s ease forwards 2s;
+    }
+    #bg-video {
+  pointer-events: none; 
+  user-select: none;      
 }
 
   </style>
 </head>
 <body>
-  <div class="overlay" id="overlay"><p>/aa</p></div>
+<video muted loop playsinline id="bg-video" 
+  style="position: fixed; top:0; left:0; width:100%; height:100%; 
+         object-fit:cover; z-index: -1; pointer-events:none; user-select:none;">
+  <source src="https://r2.guns.lol/6614af8e-7221-4bb2-ac27-235586d1b5f9.mp4" type="video/mp4">
+</video>
+
+
+
+
+
+  <div class="overlay" id="overlay"><p>Koruko</p></div>
 
   <div class="tilt-container" id="tilt">
     <div class="tilt-group">
       <div class="rectangle top">
-        <img class="avatar" src="https://i.postimg.cc/7LjCtWr1/personne.png" alt="Avatar">
-        <div class="username">aa.</div>
+        <img class="avatar" src="https://i.postimg.cc/BtW8wZMP/image.png" alt="Avatar">
         <div class="subtitle" id="subtitle"></div>
-        <div class="joined">joined almost 3 years ago</div>
         <div class="badges">
-          <div class="badge" data-title="Image Host"><img src="https://i.postimg.cc/ZR8J4fXh/imagehost.png"></div>
-          <div class="badge" data-title="Winner"><img src="https://i.postimg.cc/NFbYrKgJ/winner.png"></div>
-          <div class="badge" data-title="Vérifié"><img src="https://i.postimg.cc/hPycDQZh/verify.png"></div>
-          <div class="badge" data-title="Artiste"><img src="https://i.postimg.cc/Z5WZCYXH/artiste.png"></div>
-           <div class="badge" data-title="Gifter"><img src="https://i.postimg.cc/Fzc5bZ0K/gifter.png"></div>
-          <div class="badge" data-title="Community Helper"><img src="https://i.postimg.cc/L8PYYKqd/communityhelper.png"></div>
-          <div class="badge" data-title="Booster"><img src="https://i.postimg.cc/130R19nz/booster.png"></div>
-          <div class="badge" data-title="Donor"><img src="https://i.postimg.cc/15G4s0bP/donor.png"></div>
-          <div class="badge" data-title="Christmas 2024"><img src="https://i.postimg.cc/QMZcbgwy/christmas2024.png"></div>
-          <div class="badge" data-title="OG"><img src="https://i.postimg.cc/pLzFphrY/og.png"></div>
-          <div class="badge premium" data-title="Premium"><img src="https://i.postimg.cc/YSmpy230/prenium.png"></div>
-
+          <div class="badge" data-title="Owner"><img src="https://i.postimg.cc/ydcW3CVV/crown.png"></div>
+          <div class="badge" data-title="Owner"><img src="https://i.postimg.cc/ydcW3CVV/crown.png"></div>
+          <div class="badge" data-title="Owner"><img src="https://i.postimg.cc/ydcW3CVV/crown.png"></div>
+          <div class="badge" data-title="Owner"><img src="https://i.postimg.cc/ydcW3CVV/crown.png"></div>
+          <div class="badge" data-title="Owner"><img src="https://i.postimg.cc/ydcW3CVV/crown.png"></div>
+          <div class="badge" data-title="Owner"><img src="https://i.postimg.cc/ydcW3CVV/crown.png"></div>
+          <div class="badge" data-title="Owner"><img src="https://i.postimg.cc/ydcW3CVV/crown.png"></div>
+          <div class="badge" data-title="Owner"><img src="https://i.postimg.cc/ydcW3CVV/crown.png"></div>
+          <div class="badge" data-title="Owner"><img src="https://i.postimg.cc/ydcW3CVV/crown.png"></div>
+          <div class="badge" data-title="Owner"><img src="https://i.postimg.cc/ydcW3CVV/crown.png"></div>
+          <div class="badge" data-title="Owner"><img src="https://i.postimg.cc/ydcW3CVV/crown.png"></div>
+          <div class="badge" data-title="Owner"><img src="https://i.postimg.cc/ydcW3CVV/crown.png"></div>
+          <div class="badge" data-title="Owner"><img src="https://i.postimg.cc/ydcW3CVV/crown.png"></div>
+          <div class="badge" data-title="Owner"><img src="https://i.postimg.cc/ydcW3CVV/crown.png"></div>
+          <div class="badge" data-title="Owner"><img src="https://i.postimg.cc/ydcW3CVV/crown.png"></div>
+          <div class="badge" data-title="Owner"><img src="https://i.postimg.cc/ydcW3CVV/crown.png"></div>
         </div>
-        <div class="separator"></div>
         <div class="socials">
-          <a href="https://github.com/yakoupy" target="_blank"><img src="https://i.postimg.cc/jqf6pH1s/github.png"></a>
-          <a href="https://www.tiktok.com/@s6xpeak" target="_blank"><img src="https://i.postimg.cc/sDY2CxyQ/tiktok.png"></a>
-          <a href="https://discord.gg/wkPbGRXtmK" target="_blank"><img src="https://i.postimg.cc/RZxvPBHS/discord.png"></a>
+          <a href="https://www.roblox.com/fr/users/4207600089/profile" target="_blank"><img src="https://i.postimg.cc/yYF5QQNk/koruko-no-bg.png"></a>
+          <a href="https://www.roblox.com/fr/users/4207600089/profile" target="_blank"><img src="https://i.postimg.cc/yYF5QQNk/koruko-no-bg.png"></a>
         </div>
-        <div class="views"><img src="https://i.postimg.cc/QtFycFSf/view.png"><span class="view-count">24,456</span></div>
-      </div>
-
-      <div class="rectangle bottom">
-        <img class="music-cover" id="cover" src="https://i.postimg.cc/CKD1wpZ5/guns.jpg" alt="Cover">
-        <div class="music-info">
-          <div class="music-title" id="music-title">TOXIC</div>
-          <div class="music-time">
-            <span id="current-time">0:00</span>
-            <div class="music-line"><div class="music-progress" id="progress"></div></div>
-            <span id="duration">0:00</span>
-            <div class="music-controls">
-              <img id="prev" src="https://i.postimg.cc/c4zmgfJj/arriere.png" alt="Previous">
-              <img id="play-pause" src="https://i.postimg.cc/Gh1r0gG3/reprendre.png" alt="Play/Pause">
-              <img id="next" src="https://i.postimg.cc/KYMsvJrJ/suivant.png" alt="Next">
-            </div>
-          </div>
-        </div>
+        <div class="views"><img src="https://i.postimg.cc/QtFycFSf/view.png"><span class="view-count">0</span></div>
       </div>
     </div>
   </div>
-
-  <audio id="audio"></audio>
 
   <script>
     const overlay = document.getElementById("overlay");
     const tiltContainer = document.getElementById("tilt");
     const tiltGroup = tiltContainer.querySelector(".tilt-group");
     const rectangles = tiltGroup.querySelectorAll(".rectangle");
-    const audio = document.getElementById("audio");
-    const playPauseBtn = document.getElementById("play-pause");
-    const progress = document.getElementById("progress");
-    const currentTimeEl = document.getElementById("current-time");
-    const durationEl = document.getElementById("duration");
-    const cover = document.getElementById("cover");
-    const musicTitle = document.getElementById("music-title");
-    const nextBtn = document.getElementById("next");
-    const prevBtn = document.getElementById("prev");
-    audio.addEventListener("ended", () => {
-  loadTrack(currentTrack + 1);
-});
-    const tracks = [
-      {
-        src: "https://r2.guns.lol/73dd0128-bf2c-44b1-a719-af7097403db4.mp3",
-        title: "Sybau",
-        cover: "https://i.postimg.cc/MT0Dq4fL/syba.jpg"
-      },
-      {
-        src: "https://r2.guns.lol/35becbe2-6b54-480b-a8b2-e69b64eee804.mp3",
-        title: "s",
-        cover: "https://i.postimg.cc/wxbXB7nq/seiju.jpg"
-      }
-    ];
-
-    let currentTrack = 0;
-    audio.src = tracks[currentTrack].src;
-    cover.src = tracks[currentTrack].cover;
-    musicTitle.textContent = tracks[currentTrack].title;
-
-    function loadTrack(index) {
-      currentTrack = (index + tracks.length) % tracks.length;
-      audio.src = tracks[currentTrack].src;
-      cover.src = tracks[currentTrack].cover;
-      musicTitle.textContent = tracks[currentTrack].title;
-      audio.play();
-      playPauseBtn.src = "https://i.postimg.cc/Gh1r0gG3/reprendre.png";
-    }
 
     overlay.addEventListener("click", () => {
       overlay.classList.add("fade-out");
       setTimeout(() => { rectangles.forEach(rect => rect.classList.add("visible")); }, 200);
-      audio.play();
     });
 
-    playPauseBtn.addEventListener("click", () => {
-      if (audio.paused) {
-        audio.play();
-        playPauseBtn.src = "https://i.postimg.cc/Gh1r0gG3/reprendre.png"; 
-      } else {
-        audio.pause();
-        playPauseBtn.src = "https://i.postimg.cc/RhVRfRKr/pause.png"; 
-      }
-    });
+    const titleText = ["@","@"];
+    let i = 0;
+    (function animateTitle(){
+      document.title = titleText[i];
+      i = (i+1)%titleText.length;
+      setTimeout(animateTitle,400);
+    })();
 
-    nextBtn.addEventListener("click", () => loadTrack(currentTrack + 1));
-    prevBtn.addEventListener("click", () => loadTrack(currentTrack - 1));
+    const subtitleEl = document.getElementById("subtitle");
+const texts = [
+  "Fall seven times and stand up eight.", 
+  "Kywha and Koruko on top."
+]; 
 
-    audio.addEventListener("timeupdate", () => {
-      const progressPercent = (audio.currentTime / audio.duration) * 100;
-      progress.style.width = progressPercent + "%";
-      const m = Math.floor(audio.currentTime / 60);
-      const s = Math.floor(audio.currentTime % 60).toString().padStart(2,"0");
-      currentTimeEl.textContent = `${m}:${s}`;
-    });
+let textIndex = 0;   
+let charIndex = 0;  
+let direction = 1;  
 
-    audio.addEventListener("loadedmetadata", () => {
-      const m = Math.floor(audio.duration / 60);
-      const s = Math.floor(audio.duration % 60).toString().padStart(2,"0");
-      durationEl.textContent = `${m}:${s}`;
+function typeWriter() {
+  const currentText = texts[textIndex];
+  subtitleEl.textContent = currentText.slice(0, charIndex) + "|";
+  
+  charIndex += direction;
+
+  if (charIndex > currentText.length) {
+    direction = -1;
+    charIndex = currentText.length;
+    setTimeout(typeWriter, 1000); 
+    return;
+  }
+
+  if (charIndex < 0) {
+    direction = 1;
+    charIndex = 0;
+    textIndex = (textIndex + 1) % texts.length; 
+    setTimeout(typeWriter, 500); 
+    return;
+  }
+
+  setTimeout(typeWriter, direction === 1 ? 120 : 80);
+}
+
+
+    const trailImage = "https://i.postimg.cc/yYF5QQNk/koruko-no-bg.png"; 
+    document.addEventListener("mousemove", (e) => {
+      const img = document.createElement("img");
+      img.src = trailImage;
+      img.className = "trail";
+      img.style.left = e.clientX + "px";
+      img.style.top = e.clientY + "px";
+      document.body.appendChild(img);
+      setTimeout(() => { img.remove(); }, 700); 
     });
 
     tiltContainer.addEventListener("mousemove", e => {
@@ -516,66 +404,40 @@
       const y = (e.clientY - rect.top) / rect.height;
       tiltGroup.style.transform = `rotateX(${(y-0.5)*20}deg) rotateY(${(x-0.5)*-20}deg)`;
     });
-    tiltContainer.addEventListener("mouseleave", () => tiltGroup.style.transform = "rotateX(0) rotateY(0)");
 
-    const titleText = ["@","@a","@aa","@a","@"];
-    let i = 0;
-    (function animateTitle(){
-      document.title = titleText[i];
-      i = (i+1)%titleText.length;
-      setTimeout(animateTitle,400);
-    })();
+    tiltContainer.addEventListener("mouseleave", () => {
+      tiltGroup.style.transform = "rotateX(0) rotateY(0)";
+    });
 
-const subtitleEl = document.getElementById("subtitle");
-const text = "web developer";
-let index = 0;
-let direction = 1; 
+    const viewCountEl = document.querySelector(".view-count");
+    let views = localStorage.getItem("page_views");
+    if (!views) views = 0;
+    views = parseInt(views) + 1;
+    localStorage.setItem("page_views", views);
+    viewCountEl.textContent = views.toLocaleString();
 
-function typeWriter() {
-  subtitleEl.textContent = text.slice(0, index);
+overlay.addEventListener("click", () => {
+  overlay.classList.add("fade-out");
+  rectangles.forEach(rect => rect.classList.add("visible"));
 
-  index += direction;
-
-
-  if (index > text.length) {
-    direction = -1;
-    index = text.length; 
-    setTimeout(typeWriter, 1000); 
-    return;
-  }
-
-
-  if (index < 0) {
-    direction = 1;
-    index = 0; 
-    setTimeout(typeWriter, 500); 
-    return;
-  }
-
-  setTimeout(typeWriter, direction === 1 ? 120 : 80);
-}
-
-typeWriter();
-
-const trailImage = "https://i.postimg.cc/jqfw8nQV/flower.png"; 
-
-document.addEventListener("mousemove", (e) => {
-  const img = document.createElement("img");
-  img.src = trailImage;
-  img.className = "trail";
-
-  img.style.left = e.clientX + "px";
-  img.style.top = e.clientY + "px";
-
-
-  document.body.appendChild(img);
-
+  const bgVideo = document.getElementById("bg-video");
+  bgVideo.muted = false;
+  bgVideo.volume = 0.2;
+  bgVideo.play();
   
-  setTimeout(() => {
-    img.remove();
-  }, 700); 
+  setTimeout(typeWriter, 2000);
+
 });
 
+overlay.addEventListener("click", () => {
+  overlay.classList.add("fade-out");
+  rectangles.forEach(rect => rect.classList.add("visible"));
+
+  const bgVideo = document.getElementById("bg-video");
+  bgVideo.muted = false;     
+  bgVideo.volume = 0.2;    
+  bgVideo.play();            
+});
 
   </script>
 </body>
