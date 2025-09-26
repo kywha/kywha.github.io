@@ -285,8 +285,13 @@
   pointer-events: none; 
   user-select: none;      
 }
-
+img {
+  pointer-events: none;  
+  user-select: none;      
+  -webkit-user-drag: none;
   </style>
+  }
+
 </head>
 <body>
 <video muted loop playsinline id="bg-video" 
@@ -437,6 +442,15 @@ overlay.addEventListener("click", () => {
   bgVideo.muted = false;     
   bgVideo.volume = 0.2;    
   bgVideo.play();            
+});
+
+document.addEventListener("contextmenu", (e) => {
+  e.preventDefault();
+});
+
+
+document.querySelectorAll("img").forEach(img => {
+  img.setAttribute("draggable", "false");
 });
 
   </script>
